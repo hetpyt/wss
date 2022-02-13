@@ -8,7 +8,7 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 @bp.route('/post', methods=['POST'])
 def post_data():
-    data = request.get_json(force=True, silent=True, cache=False)
+    data = request.get_json(force=True, silent=False, cache=False)
     if data is not None:
         if isinstance(data, dict):
             node_id = data.get('node_id')
