@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Charts overview{% endblock %}</h1>
+{% endblock %}
+{% block head_append %}
+  <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+{% endblock %}
+{% block navigation %}
+   <li><a href="/"><span>Home</span></a></li>
+{% endblock %}
+{% block content %}
+<div id="container-temp"></div>
+<div id="container-humi"></div>
+<div id="container-qfe"></div>
+<script>
+  Highcharts.chart("container-temp", {{ CHART_DATA_TEMP|safe }});
+  Highcharts.chart("container-humi", {{ CHART_DATA_HUMI|safe }});
+  Highcharts.chart("container-qfe", {{ CHART_DATA_QFE|safe }});
+</script>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    {% block head_append %}{% endblock %}
+  </head>
+  <body>
+    <nav>
+      <h1>Home meteo server</h1>
+      <ul>
+        {% block navigation%}{% endblock %}
+      </ul>
+    </nav>
+    <section class="content">
+      <h2>
+        {% block header %}{% endblock %}
+      </h2>
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>

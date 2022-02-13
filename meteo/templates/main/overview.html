@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Overview{% endblock %}</h1>
+{% endblock %}
+{% block navigation %}
+   <li><a href="/charts"><span>Charts</span></a></li>
+{% endblock %}
+{% block content%}
+    {% if nodes %}
+        {% for node in nodes %}
+            <p>
+            <h3>{{ node }}</h3>
+            {% if node.last_date %}
+                <span>Last data at {{node.last_date}}: </span>
+                <ul>
+                   <li>Temperature: {{ node.last_temperature|float('-') }} &#8451;</li>
+                   <li>Humidity: {{ node.last_humidity|float('-') }} %</li>
+                   <li>Pressure (QFE): {{ node.last_pressure_qfe|float('-') }} hPa</li>
+                   <li>Supply voltage: {{ node.last_voltage|float('-') }} mV</li>
+                </ul>
+            {% else %}
+                <span>no node data available</span>
+            {% endif %}
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>No nodes registered</p>
+    {% endif %}
+{% endblock %}
