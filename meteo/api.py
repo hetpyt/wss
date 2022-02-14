@@ -8,7 +8,9 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 @bp.route('/post', methods=['POST'])
 def post_data():
-    data = request.get_json(force=True, silent=False, cache=False)
+    with open('/tmp/meteo_post.tmp', 'a') as f:
+        f.write(request.get_data(False, True, False))
+    data = request.get_json(force=True, silent=True, cache=False)
     if data is not None:
         if isinstance(data, dict):
             node_id = data.get('node_id')
@@ -18,7 +20,7 @@ def post_data():
                     # TODO check node's secret
                     check_and_store(data)
                     return jsonify(result='OK')
-    return jsonify(result='FAIL')
+    return jsonify(result='FAIL', message='not json')
 
 
 def check_and_store(data):
