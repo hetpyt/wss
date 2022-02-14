@@ -8,7 +8,7 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 @bp.route('/post', methods=['POST'])
 def post_data():
-    raw_data = request.get_data(False, True, False)
+    #raw_data = request.get_data(False, True, False)
     data = request.get_json(force=True, silent=True, cache=False)
     if data is not None:
         if isinstance(data, dict):
@@ -19,7 +19,14 @@ def post_data():
                     # TODO check node's secret
                     check_and_store(data)
                     return jsonify(result='OK')
-    return jsonify(result='FAIL', message='not json', data=raw_data)
+                else:
+                    return jsonify(result='FAIL', message='node not registered')
+            else:
+                return jsonify(result='FAIL', message='no node id')
+        else:
+            return jsonify(result='FAIL', message='not dict')
+    else:
+        return jsonify(result='FAIL', message='not json')
 
 
 def check_and_store(data):
