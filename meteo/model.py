@@ -7,11 +7,11 @@ class NodeInfo(db.Model):
     __tablename__ = 'node_info'
 
     id = db.Column(db.SmallInteger, primary_key=True)
-    latitude = db.Column(db.Float(precision=5))
-    longitude = db.Column(db.Float(precision=5))
-    altitude = db.Column(db.Float(precision=5))
-    caption = db.Column(db.String(length=25))
-    description = db.Column(db.Text)
+    latitude = db.Column(db.Float(precision=5), nullable=True)
+    longitude = db.Column(db.Float(precision=5), nullable=True)
+    altitude = db.Column(db.Float(precision=5), nullable=True)
+    caption = db.Column(db.String(length=25), nullable=True)
+    description = db.Column(db.Text, nullable=True)
     secret = db.Column(db.String(32), nullable=False)
     # last data
     last_date = db.Column(db.DateTime, nullable=True)
