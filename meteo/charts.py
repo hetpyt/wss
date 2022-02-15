@@ -13,6 +13,7 @@ def charts_all():
     chart_temp = _generate_chart('Temperature', '&deg; С')
     chart_humi = _generate_chart('Humidity', '%')
     chart_qfe = _generate_chart('Pressure', 'hPa')
+    chart_volt = _generate_chart('Supply voltage', 'mV')
 
     for node in NodeInfo.query.order_by(NodeInfo.id):
         node_data = MeteoData.query\
@@ -21,11 +22,13 @@ def charts_all():
         chart_temp['series'].append(_prepare_series(node.caption, node_data, 'temperature'))
         chart_humi['series'].append(_prepare_series(node.caption, node_data, 'humidity'))
         chart_qfe['series'].append(_prepare_series(node.caption, node_data, 'pressure_qfe'))
+        chart_volt['series'].append(_prepare_series(node.caption, node_data, 'voltage'))
 
     return render_template('charts/overview.html',
                            CHART_DATA_TEMP=json.dumps(chart_temp),
                            CHART_DATA_HUMI=json.dumps(chart_humi),
-                           CHART_DATA_QFE=json.dumps(chart_qfe)
+                           CHART_DATA_QFE=json.dumps(chart_qfe),
+                           CHART_DATA_VOLT=json.dumps(chart_volt)
                            )
 
 

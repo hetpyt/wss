@@ -13,9 +13,11 @@
 <div id="container-temp"></div>
 <div id="container-humi"></div>
 <div id="container-qfe"></div>
+<div id="container-volt"></div>
 <script>
   Highcharts.chart("container-temp", {{ CHART_DATA_TEMP|safe }});
   Highcharts.chart("container-humi", {{ CHART_DATA_HUMI|safe }});
   Highcharts.chart("container-qfe", {{ CHART_DATA_QFE|safe }});
+  Highcharts.chart("container-volt", {{ CHART_DATA_VOLT|safe }});
 </script>
 {% endblock %}
