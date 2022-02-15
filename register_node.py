@@ -30,7 +30,7 @@ except EOFError:
 app = create_app()
 with app.app_context():
     ni = NodeInfo(
-        node_id=node_id,
+        id=node_id,
         caption=caption,
         latitude=latitude,
         longitude=longitude,
