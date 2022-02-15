@@ -14,12 +14,12 @@ try:
     while not all_required:
         print('register new node (* required fields')
         node_id = _input('node id []:')
-        caption = _input('node caption []')
-        latitude = _input('node latitude []')
-        longitude = _input('node longitude []')
-        altitude = _input('node altitude []')
-        description = _input('node description []')
-        secret = _input('node secret [*]')
+        caption = _input('node caption []:')
+        latitude = _input('node latitude []:')
+        longitude = _input('node longitude []:')
+        altitude = _input('node altitude []:')
+        description = _input('node description []:')
+        secret = _input('node secret [*]:')
         if secret:
             all_required = True
         else:
