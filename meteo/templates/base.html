@@ -9,17 +9,19 @@
     {% block head_append %}{% endblock %}
   </head>
   <body>
-    <nav>
-      <h1>Home meteo server</h1>
-      <ul>
-        {% block navigation%}{% endblock %}
-      </ul>
-    </nav>
-    <section class="content">
-      <h2>
-        {% block header %}{% endblock %}
-      </h2>
-      {% block content %}{% endblock %}
-    </section>
+    <div class="container-fluid">
+      <nav>
+        <h1>Home meteo server</h1>
+        <ul>
+          {% block navigation%}{% endblock %}
+        </ul>
+      </nav>
+      <section class="content">
+        <h2>
+          {% block header %}{% endblock %}
+        </h2>
+        {% block content %}{% endblock %}
+      </section>
+    </div>
   </body>
 </html>
